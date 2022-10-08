@@ -30,7 +30,7 @@ public class VehicleEntity {
   private Long version;
 
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "vehicle_type_id")
   private VehicleTypeEntity vehicleType;
 

@@ -35,53 +35,11 @@
     </properties>
 
     <dependencies>
-        <!--GRAPHQL-->
-        <!--        <dependency>-->
-        <!--            <groupId>com.graphql-java</groupId>-->
-        <!--            <artifactId>graphql-java</artifactId>-->
-        <!--            <version>10.0</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>com.graphql-java</groupId>-->
-        <!--            <artifactId>graphql-java-tools</artifactId>-->
-        <!--            <version>${graphql-tools.version}</version>-->
-        <!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-graphql</artifactId>
             <version>2.7.4</version>
         </dependency>
-
-
-        <!--        <dependency>-->
-        <!--            <groupId>com.graphql-java-generator</groupId>-->
-        <!--            <artifactId>graphql-java-client-dependencies</artifactId>-->
-        <!--            <type>pom</type>-->
-        <!--            <version>1.18.7</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>com.graphql-java-generator</groupId>-->
-        <!--            <artifactId>graphql-java-runtime</artifactId>-->
-        <!--            <version>${graphql-maven-plugin.version}</version>-->
-        <!--            <exclusions>-->
-        <!--                <exclusion>-->
-        <!--                    <groupId>com.graphql-java</groupId>-->
-        <!--                    <artifactId>graphql-java-spring-boot-starter-webmvc</artifactId>-->
-        <!--                </exclusion>-->
-        <!--            </exclusions>-->
-        <!--        </dependency>-->
-
-
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.boot</groupId>-->
-        <!--            <artifactId>spring-boot-autoconfigure</artifactId>-->
-        <!--            <version>2.6.3</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.boot</groupId>-->
-        <!--            <artifactId>spring-boot-configuration-processor</artifactId>-->
-        <!--        </dependency>-->
-
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>

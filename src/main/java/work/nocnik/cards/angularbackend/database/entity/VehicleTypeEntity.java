@@ -40,6 +40,6 @@ public class VehicleTypeEntity {
   @OneToMany(mappedBy = "vehicleType", fetch = FetchType.LAZY)
   private Set<VehicleEntity> vehicles = new HashSet<>();
 
-  @OneToMany(mappedBy = "vehicleProperty")
+  @OneToMany(mappedBy = "vehicleProperty", fetch = FetchType.LAZY)
   private Set<VehicleTypePropertyEntity> vehicleProperties = new HashSet<>();
 }

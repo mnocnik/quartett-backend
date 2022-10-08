@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,10 +30,10 @@ public class VehicleTypePropertyEntity {
 //  @Version
 //  private Long version;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @MapsId("vehicleTypeId")
   private VehicleTypeEntity vehicleType;
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @MapsId("vehiclePropertyId")
   private VehiclePropertyEntity vehicleProperty;
 

@@ -1,7 +1,8 @@
 #scalar Long
 
 type Query {
-    vehiclesOfType(typeName: String!): [Vehicle]
+    vehicles: [VehicleEntity]
+    vehiclesOfType(typeName: String!): [VehicleEntity]
 }
 
 schema {

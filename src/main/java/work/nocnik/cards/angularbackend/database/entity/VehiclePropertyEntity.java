@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -41,6 +42,6 @@ public class VehiclePropertyEntity {
   @Column(name = "sort_index")
   private Integer sortIndex = 0;
 
-  @OneToMany(mappedBy = "vehicleType")
+  @OneToMany(mappedBy = "vehicleType", fetch = FetchType.LAZY)
   private Set<VehicleTypePropertyEntity> vehicleTypes = new HashSet<>();
 }
