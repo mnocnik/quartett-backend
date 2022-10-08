@@ -1,0 +1,38 @@
+version: '3.7'
+services:
+  vehicle_db:
+    image: ${VEHICLE_DB_IMAGE}
+    container_name: vehicle_db
+    ports:
+      - ${VEHICLE_DB_EXTERNAL_PORT}:5432
+    env_file:
+      - ${VEHICLE_DB_ENV_FILE}
+    volumes:
+      - ${VEHICLE_DB_PATH}:/var/lib/postgresql/data
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "1m"
+    restart: always
+
+#  vehicle:
+#    image: ${VEHICLE_IMAGE}
+#    container_name: vehicle
+#    hostname: vehicle.local
+#    environment:
+#      - REMOTE_DEBUG_ARGS=${REMOTE_DEBUG_ARGS}
+#    depends_on:
+#      - 'vehicle_db'
+#    ports:
+#      - ${VEHICLE_EXTERNAL_PORT}:8081
+#      - ${REMOTE_DEBUG_PORT}:5005
+#    volumes:
+#      - ${VEHICLE_CONFIG_PATH}:/var/opt/vehicle/config
+#      - ${VEHICLE_LOG_PATH}:/var/opt/vehicle/log
+#    logging:
+#      driver: "json-file"
+#      options:
+#        max-file: "5"
+#        max-size: "1m"
+#    restart: always

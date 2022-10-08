@@ -1,0 +1,28 @@
+type Vehicle {
+    created: String
+    vehicleType: VehicleType
+    name: String
+    imageUrl: String
+    description: String
+}
+
+type VehicleType {
+    created: String
+    typeName: String
+    typeDescription: String
+    typeImage: String
+    vehicles: [Vehicle]
+#    vehicleProperties: [VehicleTypePropertyEntity]
+}
+#
+#type VehicleTypePropertyEntity {
+#    vehicleType: VehicleTypeEntity
+#    vehicleProperty: VehiclePropertyEntity
+#}
+#
+#type VehiclePropertyEntity {
+#    propertyName: String
+#    unitShort: String
+#    sortIndex: Int
+#    vehicleTypes: [VehicleTypePropertyEntity]
+#}

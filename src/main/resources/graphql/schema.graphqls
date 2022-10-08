@@ -1,0 +1,10 @@
+#scalar Long
+
+type Query {
+    vehiclesOfType(typeName: String!): [Vehicle]
+}
+
+schema {
+    query: Query
+}
+
