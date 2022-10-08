@@ -44,4 +44,6 @@ public class VehiclePropertyEntity {
 
   @OneToMany(mappedBy = "vehicleType", fetch = FetchType.LAZY)
   private Set<VehicleTypePropertyEntity> vehicleTypes = new HashSet<>();
+  @OneToMany(mappedBy = "vehicle", fetch = FetchType.LAZY)
+  private Set<VehicleDataEntity> vehicleData = new HashSet<>();
 }

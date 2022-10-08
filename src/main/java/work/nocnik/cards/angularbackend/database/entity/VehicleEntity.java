@@ -11,10 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "vehicle")
@@ -29,7 +31,6 @@ public class VehicleEntity {
   @Version
   private Long version;
 
-
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "vehicle_type_id")
   private VehicleTypeEntity vehicleType;
@@ -37,4 +38,10 @@ public class VehicleEntity {
   private String name;
   private String imageUrl;
   private String description;
+
+  @OneToMany(mappedBy = "vehicle", fetch = FetchType.LAZY)
+  private Set<VehicleDataEntity> data;
+  @OneToMany(mappedBy = "vehicleProperty", fetch = FetchType.LAZY)
+  private Set<VehicleDataEntity> vehicleData = new HashSet<>();
+
 }

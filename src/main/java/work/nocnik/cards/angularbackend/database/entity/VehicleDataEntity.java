@@ -9,36 +9,34 @@ import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
-import javax.persistence.Version;
 import java.io.Serializable;
-import java.time.Instant;
 
 @Entity
-@Table(name = "vehicle_type_property")
+@Table(name = "vehicle_data")
 @Getter
 @Setter
 @ToString
-public class VehicleTypePropertyEntity {
+public class VehicleDataEntity {
   @EmbeddedId
-  private VehicleTypePropertyId id = new VehicleTypePropertyId();
+  private VehicleDataId id = new VehicleDataId();
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @MapsId("vehicleTypeId")
-  private VehicleTypeEntity vehicleType;
+  @MapsId("vehicleId")
+  private VehicleEntity vehicle;
   @ManyToOne(fetch = FetchType.LAZY)
   @MapsId("vehiclePropertyId")
   private VehiclePropertyEntity vehicleProperty;
 
+  @Column(name = "value")
+  private String value;
+
   @Embeddable
-  public static class VehicleTypePropertyId implements Serializable {
+  public class VehicleDataId implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Long vehicleTypeId;
+    private Long vehicleId;
     private Long vehiclePropertyId;
   }
 }
