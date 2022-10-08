@@ -29,12 +29,17 @@ spring:
           lob:
             non_contextual_creation: true
         show_sql: true
-#        ddl-auto: create
+        #        ddl-auto: create
         temp:
           use_jdbc_metadata_defaults: false
 
-
-#graphql:
-#  servlet:
-#    websocket:
-#      enabled: false
+keycloak:
+  realm: angular
+  auth-server-url: http://192.168.0.5:81
+  ssl-required: external
+  resource: angular-example
+  public-client: true
+  credentials:
+    secret: Mgi5qHbo37DQnAbefXLMJGK1R0ppUeYf
+  use-resource-role-mappings: false   # when false: use realm-roles
+  bearer-only: true
