@@ -1,13 +1,13 @@
-package work.nocnik.cards.angularbackend;
+package work.nocnik.cards.angularbackend.factory;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.support.GenericConversionService;
-import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
  * If any Converter need a ConversionService, we need to provide this ConverterBeanFactory.
  */
 @Slf4j
-@Component
+@Configuration
 @RequiredArgsConstructor
 public class ConverterBeanFactory implements ApplicationListener<ContextRefreshedEvent> {
   private final ConversionService conversionService;

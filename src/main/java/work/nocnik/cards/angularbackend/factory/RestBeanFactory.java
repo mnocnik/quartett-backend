@@ -1,16 +1,16 @@
-package work.nocnik.cards.angularbackend;
+package work.nocnik.cards.angularbackend.factory;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.stereotype.Component;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.client.RestTemplate;
 
 @Slf4j
-@Component
+@Configuration
 public class RestBeanFactory {
   @Value("${lib.rest.timeout.connect:30000}")
   private int connectTimeout = 30000; // for rest-calls
@@ -21,7 +21,7 @@ public class RestBeanFactory {
    * This one is able to send 'PATCH'-requests
    */
   @Bean
-  public RestTemplate httpTemplate() {
+  RestTemplate httpTemplate() {
     log.debug("creating httpTemplate: connectTimeout {} & readTimeout {}", this.connectTimeout, this.readTimeout);
     final RestTemplate restTemplate = new RestTemplate();
 
@@ -34,7 +34,7 @@ public class RestBeanFactory {
   }
 
   @Bean
-  public Validator localValidatorFactoryBean() {
+  Validator localValidatorFactoryBean() {
     return new LocalValidatorFactoryBean();
   }
 }

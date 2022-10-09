@@ -14,7 +14,7 @@
             </column>
             <column name="created" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
             <column name="version" type="bigint" defaultValueNumeric="0"/>
-            <column name="uuid" type="varchar" defaultValueComputed="uuid_generate_v4()">
+            <column name="uuid" type="uuid" defaultValueComputed="uuid_generate_v4()">
                 <constraints nullable="false" unique="true" uniqueConstraintName="unique_uuid_vehicle_type"/>
             </column>
             <column name="name" type="varchar">
@@ -30,7 +30,7 @@
             </column>
             <column name="created" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
             <column name="version" type="bigint" defaultValueNumeric="0"/>
-            <column name="uuid" type="varchar" defaultValueComputed="uuid_generate_v4()">
+            <column name="uuid" type="uuid" defaultValueComputed="uuid_generate_v4()">
                 <constraints nullable="false" unique="true" uniqueConstraintName="unique_uuid_vehicle"/>
             </column>
             <column name="name" type="varchar">
@@ -49,7 +49,7 @@
             </column>
             <column name="created" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
             <column name="version" type="bigint" defaultValueNumeric="0"/>
-            <column name="uuid" type="varchar" defaultValueComputed="uuid_generate_v4()">
+            <column name="uuid" type="uuid" defaultValueComputed="uuid_generate_v4()">
                 <constraints nullable="false" unique="true" uniqueConstraintName="unique_uuid_vehicle_property"/>
             </column>
             <column name="name" type="varchar">
@@ -68,7 +68,7 @@
             </column>
             <column name="created" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
             <column name="version" type="bigint" defaultValueNumeric="0"/>
-            <column name="uuid" type="varchar" defaultValueComputed="uuid_generate_v4()">
+            <column name="uuid" type="uuid" defaultValueComputed="uuid_generate_v4()">
                 <constraints nullable="false" unique="true" uniqueConstraintName="unique_uuid_vehicle_data"/>
             </column>
             <column name="value" type="varchar">

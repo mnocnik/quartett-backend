@@ -19,6 +19,7 @@ import javax.persistence.Version;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "vehicle_property")
@@ -33,7 +34,7 @@ public class VehiclePropertyEntity {
   @Version
   private Long version;
   @Column(name = "uuid", unique = true, updatable = false)
-  private String uuid;
+  private UUID uuid;
 
   @Column(name = "name", nullable = false)
   private String name;

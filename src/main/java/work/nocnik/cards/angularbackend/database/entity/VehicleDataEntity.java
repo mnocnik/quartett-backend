@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import java.time.Instant;
+import java.util.UUID;
 
 @Entity
 @Table(name = "vehicle_data")
@@ -29,7 +30,7 @@ public class VehicleDataEntity {
   @Version
   private Long version;
   @Column(name = "uuid", unique = true, updatable = false)
-  private String uuid;
+  private UUID uuid;
 
   private String value;
 
