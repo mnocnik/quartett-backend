@@ -19,17 +19,18 @@ public class VehicleTypeResolver {
   private final VehicleTypeRepository vehicleTypeRepository;
 
   @QueryMapping
-  public VehicleTypeEntity vehicleTypeByUUID(@Argument UUID uuid) {
-    return this.vehicleTypeRepository.findByUuid(uuid).orElse(null);
-  }
-
-  @QueryMapping
-  public List<VehicleTypeEntity> vehicleType(@Argument String name) {
-    return this.vehicleTypeRepository.findByName(name);
+  public List<VehicleTypeEntity> vehicleTypes(@Argument final UUID typeUUID) {
+    if (typeUUID == null) {
+      return this.vehicleTypeRepository.findAll();
+    } else {
+      return this.vehicleTypeRepository.findByUuid(typeUUID)
+          .map(List::of)
+          .orElseGet(List::of);
+    }
   }
 
   @SchemaMapping(typeName = "VehicleTypeEntity", field = "vehicles")
-  public Set<VehicleEntity> vehicles(VehicleTypeEntity entity) {
+  public Set<VehicleEntity> vehicles(final VehicleTypeEntity entity) { // ChildMapping: do NOT use '@Argument'
     if (entity == null) {
       return Set.of();
     }

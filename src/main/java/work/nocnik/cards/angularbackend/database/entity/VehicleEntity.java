@@ -39,7 +39,7 @@ public class VehicleEntity {
   private String image;
   private String description;
 
-  @ManyToOne(optional = false)
+  @ManyToOne(optional = false, fetch = FetchType.LAZY)
   @JoinColumn(name = "vehicle_type_id", nullable = false)
   private VehicleTypeEntity vehicleType;
 

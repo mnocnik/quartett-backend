@@ -42,7 +42,7 @@ public class VehiclePropertyEntity {
   @Column(name = "sort_index")
   private Integer sortIndex = 0;
 
-  @ManyToOne(optional = false)
+  @ManyToOne(optional = false, fetch = FetchType.LAZY)
   @JoinColumn(name = "vehicle_type_id", nullable = false)
   private VehicleTypeEntity vehicleType;
 
