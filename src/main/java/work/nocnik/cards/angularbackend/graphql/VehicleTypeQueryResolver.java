@@ -18,4 +18,9 @@ public class VehicleTypeQueryResolver {
   public List<VehicleTypeEntity> vehicleType(@Argument String name) {
     return this.vehicleTypeRepository.findByName(name);
   }
+
+//  @SchemaMapping(typeName = "VehicleEntity")
+//  public VehicleEntity vehicles(@Argument VehicleEntity entity) {
+//    return entity;
+//  }
 }

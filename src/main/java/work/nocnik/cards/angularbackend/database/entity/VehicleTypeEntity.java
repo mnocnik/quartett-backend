@@ -29,6 +29,8 @@ public class VehicleTypeEntity {
   private Instant created = Instant.now();
   @Version
   private Long version;
+  @Column(name = "uuid", unique = true, updatable = false)
+  private String uuid;
 
   @Column(name = "name", nullable = false, unique = true)
   private String name;

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -31,6 +32,8 @@ public class VehicleEntity {
   private Instant created = Instant.now();
   @Version
   private Long version;
+  @Column(name = "uuid", unique = true, updatable = false)
+  private String uuid;
 
   private String name;
   private String image;

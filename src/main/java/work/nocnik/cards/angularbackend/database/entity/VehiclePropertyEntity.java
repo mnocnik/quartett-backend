@@ -12,16 +12,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,6 +32,8 @@ public class VehiclePropertyEntity {
   private Instant created = Instant.now();
   @Version
   private Long version;
+  @Column(name = "uuid", unique = true, updatable = false)
+  private String uuid;
 
   @Column(name = "name", nullable = false)
   private String name;

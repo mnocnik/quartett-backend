@@ -5,12 +5,18 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
     <changeSet author="mario.nocnik" id="00-vehicle">
 
+        <sql>create
+        extension if not exists "uuid-ossp";</sql>
+
         <createTable tableName="vehicle_type">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="created" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
             <column name="version" type="bigint" defaultValueNumeric="0"/>
+            <column name="uuid" type="varchar" defaultValueComputed="uuid_generate_v4()">
+                <constraints nullable="false" unique="true" uniqueConstraintName="unique_uuid_vehicle_type"/>
+            </column>
             <column name="name" type="varchar">
                 <constraints nullable="false" unique="true" uniqueConstraintName="unique_vehicle_type_name"/>
             </column>
@@ -24,6 +30,9 @@
             </column>
             <column name="created" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
             <column name="version" type="bigint" defaultValueNumeric="0"/>
+            <column name="uuid" type="varchar" defaultValueComputed="uuid_generate_v4()">
+                <constraints nullable="false" unique="true" uniqueConstraintName="unique_uuid_vehicle"/>
+            </column>
             <column name="name" type="varchar">
                 <constraints nullable="false" unique="true" uniqueConstraintName="unique_vehicle_name"/>
             </column>
@@ -40,7 +49,9 @@
             </column>
             <column name="created" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
             <column name="version" type="bigint" defaultValueNumeric="0"/>
-
+            <column name="uuid" type="varchar" defaultValueComputed="uuid_generate_v4()">
+                <constraints nullable="false" unique="true" uniqueConstraintName="unique_uuid_vehicle_property"/>
+            </column>
             <column name="name" type="varchar">
                 <constraints nullable="false" unique="true" uniqueConstraintName="unique_vehicle_property_name"/>
             </column>
@@ -57,7 +68,9 @@
             </column>
             <column name="created" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
             <column name="version" type="bigint" defaultValueNumeric="0"/>
-
+            <column name="uuid" type="varchar" defaultValueComputed="uuid_generate_v4()">
+                <constraints nullable="false" unique="true" uniqueConstraintName="unique_uuid_vehicle_data"/>
+            </column>
             <column name="value" type="varchar">
                 <constraints nullable="false"/>
             </column>
