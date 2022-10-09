@@ -22,7 +22,7 @@ spring:
     show-sql: true
     format_sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: none # update
     properties:
       hibernate:
         jdbc:
@@ -32,6 +32,10 @@ spring:
         #        ddl-auto: create
         temp:
           use_jdbc_metadata_defaults: false
+  liquibase:
+    change-log: classpath:liquibase/changelog.xml
+    enabled: true
+    default-schema: public
 
 keycloak:
   realm: angular

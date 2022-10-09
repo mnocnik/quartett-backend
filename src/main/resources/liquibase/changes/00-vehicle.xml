@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="mario.nocnik" id="00-vehicle">
+
+        <createTable tableName="vehicle_type">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="created" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="version" type="bigint" defaultValueNumeric="0"/>
+            <column name="name" type="varchar">
+                <constraints nullable="false" unique="true" uniqueConstraintName="unique_vehicle_type_name"/>
+            </column>
+            <column name="description" type="varchar"/>
+            <column name="image" type="varchar"/>
+        </createTable>
+
+        <createTable tableName="vehicle">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="created" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="version" type="bigint" defaultValueNumeric="0"/>
+            <column name="name" type="varchar">
+                <constraints nullable="false" unique="true" uniqueConstraintName="unique_vehicle_name"/>
+            </column>
+            <column name="image" type="varchar"/>
+            <column name="description" type="varchar"/>
+            <column name="vehicle_type_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_vehicle_vehicle_type" references="vehicle_type(id)"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="vehicle_property">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="created" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="version" type="bigint" defaultValueNumeric="0"/>
+
+            <column name="name" type="varchar">
+                <constraints nullable="false" unique="true" uniqueConstraintName="unique_vehicle_property_name"/>
+            </column>
+            <column name="unit_short" type="varchar"/>
+            <column name="sort_index" type="bigint"/>
+            <column name="vehicle_type_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_vehicle_property_vehicle_type" references="vehicle_type(id)"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="vehicle_data">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="created" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="version" type="bigint" defaultValueNumeric="0"/>
+
+            <column name="value" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="vehicle_property_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_vehicle_data_vehicle_property" references="vehicle_property(id)"/>
+            </column>
+            <column name="vehicle_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_vehicle_data_vehicle" references="vehicle(id)"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="vehicle_data"/>
+            <dropTable tableName="vehicle_property"/>
+            <dropTable tableName="vehicle"/>
+            <dropTable tableName="vehicle_type"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

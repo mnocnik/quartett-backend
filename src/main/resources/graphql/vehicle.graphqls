@@ -2,27 +2,30 @@ type VehicleEntity {
     created: String
     vehicleType: VehicleTypeEntity
     name: String
-    imageUrl: String
+    image: String
     description: String
+    data: [VehicleDataEntity]
 }
 
 type VehicleTypeEntity {
     created: String
-    typeName: String
-    typeDescription: String
-    typeImage: String
+    name: String
+    description: String
+    image: String
     vehicles: [VehicleEntity]
-    vehicleProperties: [VehicleTypePropertyEntity]
-}
-
-type VehicleTypePropertyEntity {
-    vehicleType: VehicleTypeEntity
-    vehicleProperty: VehiclePropertyEntity
+    properties: [VehiclePropertyEntity]
 }
 
 type VehiclePropertyEntity {
-    propertyName: String
+    name: String
     unitShort: String
     sortIndex: Int
-    vehicleTypes: [VehicleTypePropertyEntity]
+    vehicleType: VehicleTypeEntity
+    data: [VehicleDataEntity]
+}
+
+type VehicleDataEntity {
+    value: String
+    property: VehiclePropertyEntity
+    vehicle: VehicleEntity
 }

@@ -21,14 +21,14 @@ public class VehicleQueryResolver {
     return this.vehicleRepository.findAll();
   }
 
-  @QueryMapping
-  public List<VehicleEntity> vehiclesOfType(@Argument final String typeName) {
-    return this.vehicleRepository.findAll().stream()
-        .filter(entity -> this.sameTypeName(entity, typeName))
-        .toList();
-  }
-
-  private boolean sameTypeName(final VehicleEntity entity, final String typeName) {
-    return typeName.equals(entity.getVehicleType().getTypeName());
-  }
+//  @QueryMapping
+//  public List<VehicleEntity> vehiclesOfType(@Argument final String typeName) {
+//    return this.vehicleRepository.findAll().stream()
+//        .filter(entity -> this.sameTypeName(entity, typeName))
+//        .toList();
+//  }
+//
+//  private boolean sameTypeName(final VehicleEntity entity, final String typeName) {
+//    return typeName.equals(entity.getVehicleType().getTypeName());
+//  }
 }

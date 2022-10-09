@@ -3,6 +3,8 @@
 type Query {
     vehicles: [VehicleEntity]
     vehiclesOfType(typeName: String!): [VehicleEntity]
+
+    vehicleType(name: String!): [VehicleTypeEntity]
 }
 
 schema {

@@ -30,16 +30,16 @@ public class VehicleTypeEntity {
   @Version
   private Long version;
 
-  @Column(name = "type_name", nullable = false, unique = true)
-  private String typeName;
-  @Column(name = "type_description", nullable = false, unique = true)
-  private String typeDescription;
-  @Column(name = "type_image")
-  private String typeImage;
+  @Column(name = "name", nullable = false, unique = true)
+  private String name;
+  @Column(name = "description", nullable = false, unique = true)
+  private String description;
+  @Column(name = "image")
+  private String image;
 
   @OneToMany(mappedBy = "vehicleType", fetch = FetchType.LAZY)
   private Set<VehicleEntity> vehicles = new HashSet<>();
 
-  @OneToMany(mappedBy = "vehicleProperty", fetch = FetchType.LAZY)
-  private Set<VehicleTypePropertyEntity> vehicleProperties = new HashSet<>();
+  @OneToMany(mappedBy = "vehicleType", fetch = FetchType.LAZY)
+  private Set<VehiclePropertyEntity> properties = new HashSet<>();
 }

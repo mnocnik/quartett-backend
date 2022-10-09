@@ -1,5 +1,6 @@
 package work.nocnik.cards.angularbackend.database.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -31,17 +32,16 @@ public class VehicleEntity {
   @Version
   private Long version;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "vehicle_type_id")
-  private VehicleTypeEntity vehicleType;
-
   private String name;
-  private String imageUrl;
+  private String image;
   private String description;
 
+  @JsonIgnore
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "vehicle_type_id", nullable = false)
+  private VehicleTypeEntity vehicleType;
+
   @OneToMany(mappedBy = "vehicle", fetch = FetchType.LAZY)
-  private Set<VehicleDataEntity> data;
-  @OneToMany(mappedBy = "vehicleProperty", fetch = FetchType.LAZY)
-  private Set<VehicleDataEntity> vehicleData = new HashSet<>();
+  private Set<VehicleDataEntity> data = new HashSet<>();
 
 }

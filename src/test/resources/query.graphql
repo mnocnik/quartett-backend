@@ -1,0 +1,19 @@
+# http://localhost:8081/quartett/graphql
+{
+    vehicleType(name: "Ship") {
+        name
+        description
+        image
+        vehicles {
+            name
+            description
+            data {
+                value
+                property {
+                    name
+                    unitShort
+                }
+            }
+        }
+    }
+}

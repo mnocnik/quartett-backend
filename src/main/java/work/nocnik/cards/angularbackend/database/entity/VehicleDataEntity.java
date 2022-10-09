@@ -1,18 +1,19 @@
 package work.nocnik.cards.angularbackend.database.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.Table;
-import java.io.Serializable;
+import javax.persistence.Version;
+import java.time.Instant;
 
 @Entity
 @Table(name = "vehicle_data")
@@ -20,23 +21,22 @@ import java.io.Serializable;
 @Setter
 @ToString
 public class VehicleDataEntity {
-  @EmbeddedId
-  private VehicleDataId id = new VehicleDataId();
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+  private Instant created = Instant.now();
+  @Version
+  private Long version;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @MapsId("vehicleId")
-  private VehicleEntity vehicle;
-  @ManyToOne(fetch = FetchType.LAZY)
-  @MapsId("vehiclePropertyId")
-  private VehiclePropertyEntity vehicleProperty;
-
-  @Column(name = "value")
   private String value;
 
-  @Embeddable
-  public class VehicleDataId implements Serializable {
-    private static final long serialVersionUID = 1L;
-    private Long vehicleId;
-    private Long vehiclePropertyId;
-  }
+  @JsonIgnore
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "vehicle_property_id", nullable = false)
+  private VehiclePropertyEntity property;
+
+  @JsonIgnore
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "vehicle_id", nullable = false)
+  private VehicleEntity vehicle;
 }
