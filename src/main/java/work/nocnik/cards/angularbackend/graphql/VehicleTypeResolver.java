@@ -5,12 +5,12 @@ import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import work.nocnik.cards.angularbackend.database.entity.VehicleEntity;
 import work.nocnik.cards.angularbackend.database.entity.VehicleTypeEntity;
 import work.nocnik.cards.angularbackend.database.repository.VehicleTypeRepository;
 
-import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @Controller
@@ -19,21 +19,19 @@ public class VehicleTypeResolver {
   private final VehicleTypeRepository vehicleTypeRepository;
 
   @QueryMapping
-  public List<VehicleTypeEntity> vehicleTypes(@Argument final UUID typeUUID) {
+  public Flux<VehicleTypeEntity> vehicleTypes(@Argument final UUID typeUUID) {
     if (typeUUID == null) {
-      return this.vehicleTypeRepository.findAll();
+      return Flux.fromIterable(this.vehicleTypeRepository.findAll());
     } else {
-      return this.vehicleTypeRepository.findByUuid(typeUUID)
-          .map(List::of)
-          .orElseGet(List::of);
+      return Mono.justOrEmpty(this.vehicleTypeRepository.findByUuid(typeUUID)).flux();
     }
   }
 
   @SchemaMapping(typeName = "VehicleTypeEntity", field = "vehicles")
-  public Set<VehicleEntity> vehicles(final VehicleTypeEntity entity) { // ChildMapping: do NOT use '@Argument'
+  public Flux<VehicleEntity> vehicles(final VehicleTypeEntity entity) { // ChildMapping: do NOT use '@Argument'
     if (entity == null) {
-      return Set.of();
+      return Flux.empty();
     }
-    return entity.getVehicles();
+    return Flux.fromIterable(entity.getVehicles());
   }
 }

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import work.nocnik.cards.angularbackend.database.entity.VehicleEntity;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -13,4 +14,6 @@ import java.util.UUID;
 public interface VehicleRepository extends JpaRepository<VehicleEntity, Long> {
 
   Optional<VehicleEntity> findByUuid(final UUID uuid);
+
+  List<VehicleEntity> findByVehicleTypeUuid(final UUID uuid);
 }

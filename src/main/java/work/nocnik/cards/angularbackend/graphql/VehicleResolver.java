@@ -4,11 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
+import reactor.core.publisher.Flux;
 import work.nocnik.cards.angularbackend.database.entity.VehicleEntity;
 import work.nocnik.cards.angularbackend.database.repository.VehicleRepository;
 
 import javax.annotation.security.RolesAllowed;
-import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -18,13 +18,11 @@ public class VehicleResolver {
 
   @RolesAllowed("DEV")
   @QueryMapping
-  public List<VehicleEntity> vehicles(@Argument final UUID typeUUID) {
+  public Flux<VehicleEntity> vehicles(@Argument final UUID typeUUID) {
     if (typeUUID == null) {
-      return this.vehicleRepository.findAll();
+      return Flux.fromIterable(this.vehicleRepository.findAll());
     } else {
-      return this.vehicleRepository.findAll().stream()
-          .filter(entity -> typeUUID.equals(entity.getVehicleType().getUuid()))
-          .toList();
+      return Flux.fromIterable(this.vehicleRepository.findByVehicleTypeUuid(typeUUID));
     }
   }
 }
