@@ -40,9 +40,11 @@ public class VehicleTypeEntity {
   @Column(name = "image")
   private String image;
 
+  @ToString.Exclude
   @OneToMany(mappedBy = "vehicleType", fetch = FetchType.LAZY)
   private Set<VehicleEntity> vehicles = new HashSet<>();
 
+  @ToString.Exclude
   @OneToMany(mappedBy = "vehicleType", fetch = FetchType.LAZY)
   private Set<VehiclePropertyEntity> properties = new HashSet<>();
 }

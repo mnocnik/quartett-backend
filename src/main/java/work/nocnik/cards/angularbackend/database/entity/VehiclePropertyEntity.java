@@ -1,6 +1,5 @@
 package work.nocnik.cards.angularbackend.database.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -43,11 +42,11 @@ public class VehiclePropertyEntity {
   @Column(name = "sort_index")
   private Integer sortIndex = 0;
 
-  @JsonIgnore
   @ManyToOne(optional = false)
   @JoinColumn(name = "vehicle_type_id", nullable = false)
   private VehicleTypeEntity vehicleType;
 
+  @ToString.Exclude
   @OneToMany(mappedBy = "property", fetch = FetchType.LAZY)
   private Set<VehicleDataEntity> data = new HashSet<>();
 
