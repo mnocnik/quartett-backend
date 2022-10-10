@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>work.nocnik.cards</groupId>
-    <artifactId>angular-backend</artifactId>
+    <artifactId>quartett-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>angular-backend</name>
-    <description>angular-backend</description>
+    <name>quartett-backend</name>
+    <description>quartett-backend</description>
 
     <properties>
         <java.version>17</java.version>
@@ -125,14 +125,14 @@
     </dependencyManagement>
 
     <build>
-        <finalName>angular-backend</finalName>
+        <finalName>quartett-backend</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring.boot.version}</version>
                 <configuration>
-                    <mainClass>work.nocnik.cards.angularbackend.AngularBackendApplication</mainClass>
+                    <mainClass>work.nocnik.quartett.backend.QuartettBackendApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
