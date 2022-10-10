@@ -34,9 +34,6 @@ public class VehicleResolver {
 
   @SchemaMapping
   public Mono<VehicleTypeEntity> vehicleType(final VehicleEntity entity) { // ChildMapping: do NOT use '@Argument'
-    if (entity == null) {
-      return Mono.empty();
-    }
-    return Mono.just(entity.getVehicleType());
+    return Mono.justOrEmpty(entity.getVehicleType());
   }
 }

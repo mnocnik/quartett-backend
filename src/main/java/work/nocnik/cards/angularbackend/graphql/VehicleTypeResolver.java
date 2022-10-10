@@ -29,9 +29,6 @@ public class VehicleTypeResolver {
 
   @SchemaMapping
   public Flux<VehicleEntity> vehicles(final VehicleTypeEntity entity) { // ChildMapping: do NOT use '@Argument'
-    if (entity == null) {
-      return Flux.empty();
-    }
     return Flux.fromIterable(entity.getVehicles());
   }
 }
