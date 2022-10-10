@@ -25,10 +25,17 @@ import java.util.List;
 public class DevelopFilter extends OncePerRequestFilter {
 
   @Override
-  protected void doFilterInternal(final HttpServletRequest request, final HttpServletResponse response, final FilterChain filterChain) throws ServletException, IOException {
+  protected void doFilterInternal(final HttpServletRequest servletRequest, final HttpServletResponse servletResponse, final FilterChain filterChain) throws ServletException, IOException {
     final GrantedAuthority granted = new SimpleGrantedAuthority("ROLE_DEV");
     final Authentication auth = new UsernamePasswordAuthenticationToken("developer", null, List.of(granted));
     SecurityContextHolder.getContext().setAuthentication(auth);
-    filterChain.doFilter(request, response);
+
+//    servletResponse.setHeader("Access-Control-Allow-Origin", "*");
+//    servletResponse.setHeader("Access-Control-Allow-Methods", "GET,POST,DELETE,PUT,OPTIONS");
+//    servletResponse.setHeader("Access-Control-Allow-Headers", "*");
+//    servletResponse.setHeader("Access-Control-Allow-Credentials", "true");
+//    servletResponse.setHeader("Access-Control-Max-Age", "180");
+
+    filterChain.doFilter(servletRequest, servletResponse);
   }
 }
