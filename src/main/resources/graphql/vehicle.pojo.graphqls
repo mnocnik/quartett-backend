@@ -1,0 +1,41 @@
+type Vehicle {
+    created: String
+    version: Int
+    uuid: String
+    name: String
+    image: String
+    description: String
+    vehicleType: VehicleType
+    data: [VehicleData]
+}
+
+type VehicleType {
+    created: String
+    version: Int
+    uuid: String
+    name: String
+    description: String
+    image: String
+    vehicles: [Vehicle]
+    properties: [VehicleProperty]
+}
+
+type VehicleProperty {
+    created: String
+    version: Int
+    uuid: String
+    name: String
+    unitShort: String
+    sortIndex: Int
+    vehicleType: VehicleType
+    data: [VehicleData]
+}
+
+type VehicleData {
+    created: String
+    version: Int
+    uuid: String
+    value: String
+    property: VehicleProperty
+    vehicle: Vehicle
+}
