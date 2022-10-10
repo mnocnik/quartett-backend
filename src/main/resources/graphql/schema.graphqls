@@ -1,10 +1,10 @@
 scalar UUID
 
 type Query {
-    vehicle(uuid: UUID!): VehicleEntity
-    vehiclesByType(typeUUID: UUID): [VehicleEntity]
+    vehicle(uuid: UUID!): Vehicle
+    vehiclesByType(typeUUID: UUID): [Vehicle]
 
-    vehicleTypes(typeUUID: UUID): [VehicleTypeEntity]
+    vehicleTypes(typeUUID: UUID): [VehicleType]
 }
 
 schema {

@@ -1,19 +1,28 @@
 # http://localhost:8081/quartett/graphql
 {
-    vehicleType(name: "Ship") {
+    vehicleTypes(typeUUID: "87a6da7a-eec6-4bdb-8c08-9453efff69c8") {
+        uuid
         name
         description
         image
         vehicles {
+            uuid
             name
             description
             data {
+                uuid
                 value
                 property {
+                    uuid
                     name
                     unitShort
                 }
             }
+        }
+        properties {
+            uuid
+            name
+            unitShort
         }
     }
 }

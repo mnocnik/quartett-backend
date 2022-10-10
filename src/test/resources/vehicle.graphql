@@ -1,0 +1,23 @@
+# http://localhost:8081/quartett/graphql
+
+{
+    vehicle(uuid: "b194aaee-089d-4bf0-9feb-311d2c0f62f8") {
+        uuid
+        name
+        description
+        image
+        vehicleType {
+            name
+            description
+            image
+        }
+        data {
+            value
+            property {
+                name
+                unitShort
+                sortIndex
+            }
+        }
+    }
+}
