@@ -1,3 +1,0 @@
-#scalar Long
-
-directive @internal (credential: String! = "key of credentials:credentialMap") on FIELD_DEFINITION | ENUM_VALUE

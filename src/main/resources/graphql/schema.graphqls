@@ -1,5 +1,7 @@
 scalar UUID
 
+directive @internal (credential: String! = "key of credentials:credentialMap") on FIELD_DEFINITION | ENUM_VALUE
+
 type Query {
     vehicle(uuid: UUID!): Vehicle
     vehiclesByType(typeUUID: UUID): [Vehicle]
