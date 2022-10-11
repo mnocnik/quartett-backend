@@ -7,7 +7,7 @@ type Query {
     vehiclesByType(typeUUID: UUID): [Vehicle]
 
     vehicleTypes(typeUUID: UUID): [VehicleType]
-    modifyVehicleType(vehicleType: VehicleTypesInput): VehicleType
+    modifyVehicleType(vehicleType: VehicleTypeInput): VehicleType
 }
 
 schema {

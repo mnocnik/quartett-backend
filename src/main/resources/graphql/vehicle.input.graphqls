@@ -1,4 +1,4 @@
-input VehicleTypesInput {
+input VehicleTypeInput {
     version: Int
     uuid: String
     name: String
