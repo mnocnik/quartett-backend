@@ -25,3 +25,6 @@ Lessons learned:
 * spring-boot 2.7 added 'spring-boot-starter-graphql' --> everything changed
 * closed some missings in orm-mapping by annotation
 * git remote set-url origin git@github.com:<USER>/<PROJECT>.git 
+
+COMMENTS:
+* lsof -n -i:8081 | grep LISTEN
