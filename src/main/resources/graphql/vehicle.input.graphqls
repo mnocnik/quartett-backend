@@ -1,13 +1,26 @@
-input VehicleTypeInput {
+input VehicleTypeCreate {
+    name: String!
+    description: String
+    image: String
+}
+input VehicleTypeUpdate {
     version: Int
     uuid: String
     name: String!
     description: String
     image: String
-    properties: [VehiclePropertyInput]
 }
 
-input VehiclePropertyInput {
+
+
+input VehiclePropertyCreate {
+    name: String!
+    unitShort: String!
+    sortIndex: Int
+}
+
+
+input VehiclePropertyUpdate {
     version: Int
     uuid: String
     name: String!

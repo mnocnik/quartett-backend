@@ -32,7 +32,7 @@ public class VehicleEntity {
   private Instant created = Instant.now();
   @Version
   private Long version;
-  @Column(name = "uuid", unique = true, updatable = false)
+  @Column(name = "uuid")
   private UUID uuid = UUID.randomUUID();
 
   private String name;

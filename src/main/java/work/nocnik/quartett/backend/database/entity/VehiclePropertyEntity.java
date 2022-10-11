@@ -32,7 +32,7 @@ public class VehiclePropertyEntity {
   private Instant created = Instant.now();
   @Version
   private Long version;
-  @Column(name = "uuid", unique = true, updatable = false)
+  @Column(name = "uuid")
   private UUID uuid = UUID.randomUUID();
 
   @Column(name = "name", nullable = false)
@@ -49,5 +49,4 @@ public class VehiclePropertyEntity {
   @ToString.Exclude
   @OneToMany(mappedBy = "property", fetch = FetchType.LAZY)
   private Set<VehicleDataEntity> data = new HashSet<>();
-
 }

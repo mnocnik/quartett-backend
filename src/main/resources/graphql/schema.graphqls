@@ -10,7 +10,8 @@ type Query {
 }
 
 type Mutation {
-    modifyVehicleType(vehicleTypeInput: VehicleTypeInput!): VehicleType
+    createVehicleType(input: VehicleTypeCreate!): VehicleType
+    updateVehicleType(input: VehicleTypeUpdate!): VehicleType
     removeVehicleType(typeUUID: UUID!): UUID
 }
 

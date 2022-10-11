@@ -53,7 +53,7 @@
                 <constraints nullable="false" unique="true" uniqueConstraintName="unique_uuid_vehicle_property"/>
             </column>
             <column name="name" type="varchar">
-                <constraints nullable="false" unique="true" uniqueConstraintName="unique_vehicle_property_name"/>
+                <constraints nullable="false"/>
             </column>
             <column name="unit_short" type="varchar"/>
             <column name="sort_index" type="bigint"/>
@@ -61,6 +61,7 @@
                 <constraints nullable="false" foreignKeyName="fk_vehicle_property_vehicle_type" references="vehicle_type(id)"/>
             </column>
         </createTable>
+        <addUniqueConstraint tableName="vehicle_property" columnNames="vehicle_type_id,name" constraintName="unique_vehicle_property_name_vehicle_type_id"/>
 
         <createTable tableName="vehicle_data">
             <column name="id" type="bigint" autoIncrement="true">
@@ -81,6 +82,7 @@
                 <constraints nullable="false" foreignKeyName="fk_vehicle_data_vehicle" references="vehicle(id)"/>
             </column>
         </createTable>
+        <addUniqueConstraint tableName="vehicle_data" columnNames="vehicle_property_id,vehicle_id" constraintName="unique_vehicle_data_property_id_vehicle_id"/>
 
         <rollback>
             <dropTable tableName="vehicle_data"/>

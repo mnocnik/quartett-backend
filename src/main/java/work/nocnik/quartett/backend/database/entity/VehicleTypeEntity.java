@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,7 +30,7 @@ public class VehicleTypeEntity {
   private Instant created = Instant.now();
   @Version
   private Long version;
-  @Column(name = "uuid", unique = true, updatable = false)
+  @Column(name = "uuid")
   private UUID uuid = UUID.randomUUID();
 
   @Column(name = "name", nullable = false, unique = true)
@@ -42,10 +41,10 @@ public class VehicleTypeEntity {
   private String image;
 
   @ToString.Exclude
-  @OneToMany(mappedBy = "vehicleType", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+  @OneToMany(mappedBy = "vehicleType", fetch = FetchType.LAZY)
   private Set<VehicleEntity> vehicles = new HashSet<>();
 
   @ToString.Exclude
-  @OneToMany(mappedBy = "vehicleType", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+  @OneToMany(mappedBy = "vehicleType", fetch = FetchType.LAZY)
   private Set<VehiclePropertyEntity> properties = new HashSet<>();
 }
