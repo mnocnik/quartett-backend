@@ -1,0 +1,16 @@
+input VehicleTypesInput {
+    version: Int
+    uuid: String
+    name: String
+    description: String
+    image: String
+    properties: [VehiclePropertyInput]
+}
+
+input VehiclePropertyInput {
+    version: Int
+    uuid: String
+    name: String
+    unitShort: String
+    sortIndex: Int
+}
