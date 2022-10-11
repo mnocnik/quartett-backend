@@ -1,0 +1,5 @@
+# http://localhost:8081/quartett/graphql
+
+mutation {
+    removeVehicleType(typeUUID: "909f9e89-4d09-4137-8083-82be2eccccd8")
+}

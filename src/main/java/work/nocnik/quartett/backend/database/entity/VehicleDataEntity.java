@@ -30,7 +30,7 @@ public class VehicleDataEntity {
   @Version
   private Long version;
   @Column(name = "uuid", unique = true, updatable = false)
-  private UUID uuid;
+  private UUID uuid = UUID.randomUUID();
 
   private String value;
 

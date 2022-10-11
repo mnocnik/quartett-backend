@@ -1,7 +1,7 @@
 input VehicleTypeInput {
     version: Int
     uuid: String
-    name: String
+    name: String!
     description: String
     image: String
     properties: [VehiclePropertyInput]
@@ -10,7 +10,7 @@ input VehicleTypeInput {
 input VehiclePropertyInput {
     version: Int
     uuid: String
-    name: String
-    unitShort: String
+    name: String!
+    unitShort: String!
     sortIndex: Int
 }

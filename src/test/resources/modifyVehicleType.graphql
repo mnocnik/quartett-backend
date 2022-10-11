@@ -1,0 +1,38 @@
+# http://localhost:8081/quartett/graphql
+
+mutation {
+    modifyVehicleType(vehicleTypeInput: {
+        # uuid: "f25911b3-6c3e-40d2-a61b-ee9ed0c46bf0"
+        name: "Alpha"
+        description: "None"
+        image: "Unknown"
+        properties: [{
+            # uuid: "d3215253-be74-4508-8f2c-b7369d3d711f"
+            name: "P0"
+            unitShort: "U0"
+            sortIndex: 0
+        },
+            {
+                # uuid: "18cd2acc-e725-42a6-9bfc-2ff4a5a3690e"
+                name: "P1"
+                unitShort: "U1"
+                sortIndex: 1
+            },
+            {
+                # uuid: "c86ec151-99a4-4a1c-9bff-cf59fba0b73c"
+                name: "P2"
+                unitShort: "U2"
+                sortIndex: 2
+            }]
+    }) {
+        uuid
+        name
+        description
+        image
+        properties {
+            uuid
+            name
+            unitShort
+        }
+    }
+}

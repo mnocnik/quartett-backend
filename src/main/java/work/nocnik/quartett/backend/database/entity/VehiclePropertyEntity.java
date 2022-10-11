@@ -33,7 +33,7 @@ public class VehiclePropertyEntity {
   @Version
   private Long version;
   @Column(name = "uuid", unique = true, updatable = false)
-  private UUID uuid;
+  private UUID uuid = UUID.randomUUID();
 
   @Column(name = "name", nullable = false)
   private String name;

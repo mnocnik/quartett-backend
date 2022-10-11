@@ -7,9 +7,15 @@ type Query {
     vehiclesByType(typeUUID: UUID): [Vehicle]
 
     vehicleTypes(typeUUID: UUID): [VehicleType]
-    modifyVehicleType(vehicleType: VehicleTypeInput): VehicleType
+}
+
+type Mutation {
+    modifyVehicleType(vehicleTypeInput: VehicleTypeInput!): VehicleType
+    removeVehicleType(typeUUID: UUID!): UUID
 }
 
 schema {
     query: Query
+    mutation: Mutation
 }
+

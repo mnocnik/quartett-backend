@@ -16,4 +16,6 @@ public interface VehicleTypeRepository extends JpaRepository<VehicleTypeEntity, 
   Optional<VehicleTypeEntity> findByUuid(final UUID uuid);
 
   List<VehicleTypeEntity> findByName(final String name);
+
+  void deleteByUuid(final UUID uuid);
 }
